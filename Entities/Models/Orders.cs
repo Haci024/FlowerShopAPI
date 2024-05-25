@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entity.Models
 {
-    public class AppUser
+    public class Orders
     {
-      
+        public long Id { get; set; }    
+
     }
 }

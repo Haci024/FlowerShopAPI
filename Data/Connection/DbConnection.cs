@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Entity.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +14,16 @@ namespace Data.Connection
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=Odissey;initial catalog=DatabaseName;integrated Security=true");
+            optionsBuilder.UseSqlServer("server=Odissey;initial catalog=FlowerShopDb;integrated Security=true;TrustServerCertificate=true;");
+            optionsBuilder.ConfigureWarnings(warnings =>
+            {
+                warnings.Ignore(CoreEventId.NavigationBaseIncludeIgnored);
+            });
         }
+        public DbSet<Category> Category { get; set; }
+
+        public DbSet<Product> Products { get; set; }    
+
 
     }
 }

@@ -1,7 +1,9 @@
-﻿using Data.DAL;
+﻿
+using Data.Connection;
+using Data.DAL;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,33 +11,40 @@ using System.Threading.Tasks;
 namespace Data.Repositories
 {
     public class GenericRepository<T> : IGenericDAL<T> where T : class
-
     {
-        public void Create(T t)
+        private readonly DbConnection _context;
+        public GenericRepository(DbConnection context)
         {
-            using DbConnection dbContext = new DbConnection();
-            dbContext.Set<T>().Add(t);
-            dbContext.SaveChanges();
+            _context = context;
         }
 
-        public void Delete(T t)
+        public void Create(T entity)
         {
-            throw new NotImplementedException();
+            _context.Add(entity);
+            _context.SaveChanges();
         }
 
-        public T GetById(int id)
+        public void Delete(T entity)
         {
-            throw new NotImplementedException();
+            _context.Remove(entity);
+            _context.SaveChanges();
+        }
+
+        public T GetById(long id)
+        {
+            return _context.Set<T>().Find(id);
         }
 
         public IEnumerable<T> GetList()
         {
-            throw new NotImplementedException();
+            return _context.Set<T>().ToList();
         }
 
-        public void Update(T t)
+        public void Update(T entity)
         {
-            throw new NotImplementedException();
+            _context.Update(entity);
+            _context.SaveChanges();
         }
     }
+
 }

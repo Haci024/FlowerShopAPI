@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Data.DAL
 {
+    
     public interface IGenericDAL<T> where T : class
     {
         void Create(T t);
         void Update(T t);
         void Delete(T t);
-        public T GetById(int id);
+        public T GetById(long id);
         public IEnumerable<T> GetList();
     }
 }

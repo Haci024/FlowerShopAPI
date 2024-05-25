@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entity.Models
+namespace DTO.DTOS.CategoryDTO
 {
-    public class AppUser
+    public class UpdateCategoryDTO
     {
-      
+
     }
 }

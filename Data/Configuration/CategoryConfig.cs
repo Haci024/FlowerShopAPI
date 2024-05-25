@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entity.Models
+namespace Data.Configuration
 {
-    public class AppUser
+    public class CategoryConfig
     {
-      
     }
 }

@@ -1,4 +1,9 @@
+﻿using AutoMapper;
+using Business.Service;
+using DTO.DTOS.CategoryDTO;
+using Entity.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace API.Controllers
 {
@@ -6,31 +11,48 @@ namespace API.Controllers
     [Route("[controller]")]
     public class CategoryController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult GetCategoryList()
-        {
+        private readonly ICategoryService _category;
+        private readonly IMapper _mapper;
 
-            return Ok();
+        public CategoryController(ICategoryService category,IMapper mapper)
+        {
+            _category = category;
+            _mapper = mapper;   
+        }
+
+        [HttpGet("CategoryList")]
+        public IActionResult GetList()
+        {
+            var values = _mapper.Map<IEnumerable<CategoryListDTO>>(_category.GetList());
+           
+            return Ok(values);
         }
         [HttpGet("GetById/{Id}")]
-        public IActionResult GetById()
+        public IActionResult GetById(long Id)
         {
-
-            return Ok();
+            var values = _mapper.Map<GetCategoryDTO>(_category.GetById(Id));
+            return Ok(values);
         }
-        [HttpPost]
-        public IActionResult Create()
+        [HttpPost("Create")]
+        public IActionResult Create(AddCategoryDTO dto)
         {
+            _category.Create(new Category()
+            {
+                Name =dto.Name,
+                Status = dto.Status,
+                Id = dto.Id,
+            });
+          
 
-            return Ok();
+            return Ok("Əlavə edildi!");
         }
-        [HttpPut]
-        public IActionResult Update()
+        [HttpPut("Update/{Id}")]
+        public IActionResult Update(UpdateCategoryDTO dto)
         {
-
-            return Ok();
+          
+            return Ok("Yeniləndi!");
         }
-        [HttpPut]
+        [HttpPut("Delete/{Id}")]
         public IActionResult Delete()
         {
 

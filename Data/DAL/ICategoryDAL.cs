@@ -9,5 +9,10 @@ namespace Data.DAL
 {
     public interface ICategoryDAL:IGenericDAL<Category>
     {
+        public ICollection<Category> GetActiveCategories();
+
+        public ICollection<Category> GetDeactiveCategories();
+
+       
     }
 }
