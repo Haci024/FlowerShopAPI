@@ -8,7 +8,7 @@ namespace DTO.DTOS.ProductDTO
 {
     public class AddProductDTO
     {
-        public long Id { get; set; }
+      
 
         public string Title { get; set; } = string.Empty;
 

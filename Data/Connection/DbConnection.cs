@@ -22,7 +22,19 @@ namespace Data.Connection
         }
         public DbSet<Category> Category { get; set; }
 
-        public DbSet<Product> Products { get; set; }    
+        public DbSet<Product> Products { get; set; }   
+        
+        public DbSet<ProductImages> ProductImages { get; set; }
+
+        public DbSet<Basket> Baskets { get; set; }
+
+        public DbSet<ContactUs> ContactUs { get; set; }
+
+        public DbSet<Subscribers> Subscribers { get; set; }
+
+        public DbSet<Orders> Orders { get; set; }
+
+       
 
 
     }

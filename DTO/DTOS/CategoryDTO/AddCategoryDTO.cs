@@ -8,9 +8,9 @@ namespace DTO.DTOS.CategoryDTO
 {
     public class AddCategoryDTO
     {
-        public long Id { get; set; }
 
-        public string Name { get; set; } = string.Empty;
+
+        public string Name { get; set; }
 
         public bool Status { get; set; }
     }

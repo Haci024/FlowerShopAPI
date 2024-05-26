@@ -10,7 +10,7 @@ namespace DTO.DTOS.ProductDTO
 {
     public class UpdateProductDTO
     {
-        public long Id { get; set; }
+      
 
         public string Title { get; set; } = string.Empty;
 

@@ -39,6 +39,7 @@ namespace API.Controllers
         {
             Category category = new Category();
             _mapper.Map(category, dto);
+          
             _category.Create(category);
 
             return Ok("Əlavə edildi!");
