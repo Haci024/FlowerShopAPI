@@ -25,10 +25,20 @@ namespace Business.Manager
         {
             _dal.Delete(entity);
         }
-        
+
+        public ICollection<Category> GetActiveCategories()
+        {
+           return _dal.GetActiveCategories();
+        }
+
         public Category GetById(long id)
         {
            return _dal.GetById(id);
+        }
+
+        public ICollection<Category> GetDeactiveCategories()
+        {
+            return _dal.GetDeactiveCategories();
         }
 
         public IEnumerable<Category> GetList()

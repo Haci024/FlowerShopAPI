@@ -8,6 +8,10 @@ namespace DTO.DTOS.CategoryDTO
 {
     public class CategoryListDTO
     {
+        public long Id { get; set; }
 
+        public string Name { get; set; }
+
+        public bool Status { get; set; }
     }
 }

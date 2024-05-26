@@ -10,6 +10,8 @@ namespace Business.Service
 {
     public interface ICategoryService:IGenericService<Category>
     {
-       
+        public ICollection<Category> GetActiveCategories();
+
+        public ICollection<Category> GetDeactiveCategories();
     }
 }

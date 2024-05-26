@@ -3,6 +3,7 @@ using Business.Service;
 using Data.Connection;
 using Data.DAL;
 using Data.Repositories;
+using DTO.AutoMapper;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,7 +15,7 @@ builder.Services.AddScoped<ICategoryService, CategoryManager>();
 builder.Services.AddScoped<ICategoryDAL,CategoryRepository>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+ builder.Services.AddAutoMapper(typeof(CategoryMapper));
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {

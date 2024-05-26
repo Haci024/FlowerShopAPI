@@ -8,6 +8,10 @@ namespace DTO.DTOS.CategoryDTO
 {
     public class UpdateCategoryDTO
     {
+        
 
+        public string Name { get; set; }
+
+        public bool Status { get; set; }
     }
 }

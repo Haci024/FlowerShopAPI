@@ -23,9 +23,10 @@ namespace API.Controllers
         [HttpGet("CategoryList")]
         public IActionResult GetList()
         {
-            var values = _mapper.Map<IEnumerable<CategoryListDTO>>(_category.GetList());
-           
-            return Ok(values);
+            //  var values = _mapper.Map<IEnumerable<CategoryListDTO>>(_category.GetList());
+            var entities = _category.GetList();
+            var dtos = _mapper.Map<IEnumerable<CategoryListDTO>>(entities);
+            return Ok(dtos);
         }
         [HttpGet("GetById/{Id}")]
         public IActionResult GetById(long Id)
@@ -36,39 +37,57 @@ namespace API.Controllers
         [HttpPost("Create")]
         public IActionResult Create(AddCategoryDTO dto)
         {
-            _category.Create(new Category()
-            {
-                Name =dto.Name,
-                Status = dto.Status,
-                Id = dto.Id,
-            });
-          
+            Category category = new Category();
+            _mapper.Map(category, dto);
+            _category.Create(category);
 
             return Ok("Əlavə edildi!");
         }
         [HttpPut("Update/{Id}")]
-        public IActionResult Update(UpdateCategoryDTO dto)
+        public IActionResult Update(long Id,UpdateCategoryDTO dto)
         {
-          
+            var entity = _category.GetById(Id);
+            if (entity == null)
+            {
+                return NotFound("Category not found");
+            }
+            _mapper.Map(dto,entity);
+            _category.Update(entity);
             return Ok("Yeniləndi!");
         }
-        [HttpPut("Delete/{Id}")]
-        public IActionResult Delete()
+        [HttpDelete("Delete/{Id}")]
+        public IActionResult Delete(long Id)
         {
-
-            return Ok();
+            if (Id == null)
+            {
+                return BadRequest("Bu Id uyğun kateqoriya mövcud deyil!");
+            }
+            var Entity = _category.GetById(Id);
+            if (Entity==null)
+            {
+                return NotFound("Xəta!");
+            }
+            _category.Delete(Entity);   
+            return Ok("Kateqoriya silindi!");
         }
         [HttpGet("ActiveCategoryList")]
         public IActionResult ActiveCategoryList()
         {
+          
+            ICollection<Category> category=_category.GetActiveCategories();
+            var dto = _mapper.Map<IEnumerable<CategoryListDTO>>(category);
 
-            return Ok();
+
+            return Ok(dto);
         }
-        [HttpGet("DeactiveCategoryList")]
-        public IActionResult DeacitveActiveCategoryList()
+        [HttpGet("DeletedCategoryList")]
+        public IActionResult DeletedCategoryList()
         {
-        
-            return Ok();
+            var entities = _category.GetDeactiveCategories();
+            var dto = _mapper.Map<IEnumerable<CategoryListDTO>>(entities);
+
+
+            return Ok(dto);
         }
     }
 }
