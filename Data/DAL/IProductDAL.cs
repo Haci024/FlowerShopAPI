@@ -9,19 +9,19 @@ namespace Data.DAL
 {
     public interface IProductDAL:IGenericDAL<Product>
     {
-        public ICollection<Product> ProductListByCategory(long categoryId);
+        public ICollection<Product> ProductListByCategory(int categoryId);
 
         public ICollection<Product> PopularProducts();
 
-        public ICollection<Product> PopularProductsByCategory(long categoryId);
+        public ICollection<Product> PopularProductsByCategory(int categoryId);
 
         public ICollection<Product> ActiveProductList();
 
         public ICollection<Product> DeactiveProductList();
 
-        public ICollection<Product> ActiveProductsByCategory(long categoryId);
+        public ICollection<Product> ActiveProductsByCategory(int categoryId);
 
-        public ICollection<Product> DeactiveProductsByCategory(long categoryId);
+        public ICollection<Product> DeactiveProductsByCategory(int categoryId);
 
     }
 }

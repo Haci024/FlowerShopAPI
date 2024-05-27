@@ -10,7 +10,7 @@ namespace Entity.Models
 {
     public class ProductImages
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         public string ImgUrl { get; set; }
       
@@ -19,7 +19,7 @@ namespace Entity.Models
 
         public Product Product { get; set; }
 
-        public long ProductId { get; set; }
+        public int ProductId { get; set; }
 
     }
 }

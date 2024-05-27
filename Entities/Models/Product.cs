@@ -9,7 +9,7 @@ namespace Entity.Models
 {
     public class Product
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         public string Title { get; set; }=string.Empty;
 
@@ -28,7 +28,7 @@ namespace Entity.Models
         public Category Category { get; set; }
 
         [ForeignKey(nameof(Category))]
-        public long CategoryId { get; set; }
+        public int CategoryId { get; set; }
 
         public IEnumerable<ProductImages> ProductImages { get; set; }
     }

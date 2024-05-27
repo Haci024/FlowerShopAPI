@@ -1,17 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Entity.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entity.Models
+namespace Business.Service
 {
-    public class Basket
+    public interface ISubscriberService:IGenericService<Subscribers>
     {
         
-        public int Id { get; set; }
-
-       
     }
 }

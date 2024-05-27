@@ -25,7 +25,7 @@ namespace Data.Repositories
               return _db.Products.Include(x=>x.Category).Where(x=>x.Status==true && x.Category.Status==true).ToList();
         }
 
-        public ICollection<Product> ActiveProductsByCategory(long categoryId)
+        public ICollection<Product> ActiveProductsByCategory(int categoryId)
         {
             return _db.Products.Include(x => x.Category).Where(x => x.Status == true && x.CategoryId==categoryId  && x.Category.Status==true).ToList();
         }
@@ -35,7 +35,7 @@ namespace Data.Repositories
             return _db.Products.Include(x => x.Category).Where(x => x.Status == false).ToList();
         }
 
-        public ICollection<Product> DeactiveProductsByCategory(long categoryId)
+        public ICollection<Product> DeactiveProductsByCategory(int categoryId)
         {
             return _db.Products.Include(x => x.Category).Where(x => x.Status == false && x.CategoryId == categoryId && x.Category.Status == false).ToList();
         }
@@ -45,12 +45,12 @@ namespace Data.Repositories
             return _db.Products.Include(x => x.Category).Where(x => x.Status == true && x.Popular == true && x.Category.Status == true).ToList();
         }
 
-        public ICollection<Product> PopularProductsByCategory(long categoryId)
+        public ICollection<Product> PopularProductsByCategory(int categoryId)
         {
-            return _db.Products.Include(x => x.Category).Where(x => x.Status == true && x.Popular == true && x.Category.Status == true).ToList();
+            return _db.Products.Include(x => x.Category).Where(x => x.Status == true && x.CategoryId==categoryId  && x.Popular == true && x.Category.Status == true).ToList();
         }
 
-        public ICollection<Product> ProductListByCategory(long categoryId)
+        public ICollection<Product> ProductListByCategory(int categoryId)
         {
             return _db.Products.Include(x => x.Category).Where(x => x.Category.Status == true && x.Status==true && x.CategoryId == categoryId).ToList();
         }

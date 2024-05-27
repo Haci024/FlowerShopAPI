@@ -31,7 +31,7 @@ namespace Business.Manager
            return _dal.GetActiveCategories();
         }
 
-        public Category GetById(long id)
+        public Category GetById(int id)
         {
            return _dal.GetById(id);
         }

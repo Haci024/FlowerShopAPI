@@ -8,7 +8,7 @@ namespace Entity.Models
 {
     public class Orders
     {
-        public long Id { get; set; }    
+        public int Id { get; set; }    
 
     }
 }

@@ -12,7 +12,7 @@ namespace Data.DAL
         void Create(T t);
         void Update(T t);
         void Delete(T t);
-        public T GetById(long id);
+        public T GetById(int id);
         public IEnumerable<T> GetList();
     }
 }

@@ -10,7 +10,7 @@ namespace DTO.DTOS.ProductDTO
 {
     public class ProductListDTO
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         public string Title { get; set; } = string.Empty;
 

@@ -30,7 +30,7 @@ namespace Data.Repositories
             _context.SaveChanges();
         }
 
-        public T GetById(long id)
+        public T GetById(int id)
         {
             return _context.Set<T>().Find(id);
         }

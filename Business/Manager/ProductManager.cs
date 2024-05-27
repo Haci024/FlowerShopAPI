@@ -22,7 +22,7 @@ namespace Business.Manager
             return _dal.ActiveProductList();    
         }
 
-        public ICollection<Product> ActiveProductsByCategory(long categoryId)
+        public ICollection<Product> ActiveProductsByCategory(int categoryId)
         {
            return _dal.ActiveProductsByCategory(categoryId);
         }
@@ -37,7 +37,7 @@ namespace Business.Manager
             return _dal.DeactiveProductList();
         }
 
-        public ICollection<Product> DeactiveProductsByCategory(long categoryId)
+        public ICollection<Product> DeactiveProductsByCategory(int categoryId)
         {
             return _dal.DeactiveProductsByCategory(categoryId);
         }
@@ -47,7 +47,7 @@ namespace Business.Manager
             _dal.Delete(entity);
         }
 
-        public Product GetById(long id)
+        public Product GetById(int id)
         {
             return _dal.GetById(id);
         }
@@ -62,12 +62,12 @@ namespace Business.Manager
             return _dal.PopularProducts();
         }
 
-        public ICollection<Product> PopularProductsByCategory(long categoryId)
+        public ICollection<Product> PopularProductsByCategory(int categoryId)
         {
             return _dal.PopularProductsByCategory(categoryId);
         }
 
-        public ICollection<Product> ProductListByCategory(long categoryId)
+        public ICollection<Product> ProductListByCategory(int categoryId)
         {
             return _dal.ProductListByCategory(categoryId);
         }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entity.Models
+namespace DTO.DTOS.ContactUsDTO
 {
-    public class ContactUs
+    public class ReadContactUsDTO
     {
         public int Id { get; set; }
 
@@ -14,10 +14,10 @@ namespace Entity.Models
 
         public DateTime SendDate { get; set; }
 
-        public string Email { get; set; } = string.Empty;
+        public string Email { get; set; }
 
-        public string PhoneNumber { get; set; }=string.Empty;
+        public string PhoneNumber { get; set; }
 
-        public string Description { get; set; } = string.Empty;
+        public string Description { get; set; } 
     }
 }

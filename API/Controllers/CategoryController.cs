@@ -29,23 +29,30 @@ namespace API.Controllers
             return Ok(dtos);
         }
         [HttpGet("GetById/{Id}")]
-        public IActionResult GetById(long Id)
+        public IActionResult GetById(int Id)
         {
+            if (Id==null)
+            {
+                return NotFound("Id daxil edilməyib!");
+            }
             var values = _mapper.Map<GetCategoryDTO>(_category.GetById(Id));
+            if (values == null)
+            {
+                return NotFound("Belə data sistemdə mövcud deyil!");
+            }
             return Ok(values);
         }
         [HttpPost("Create")]
         public IActionResult Create(AddCategoryDTO dto)
         {
             Category category = new Category();
-            _mapper.Map(category, dto);
-          
+           
+            _mapper.Map(dto, category);
             _category.Create(category);
-
             return Ok("Əlavə edildi!");
         }
         [HttpPut("Update/{Id}")]
-        public IActionResult Update(long Id,UpdateCategoryDTO dto)
+        public IActionResult Update(int Id,UpdateCategoryDTO dto)
         {
             var entity = _category.GetById(Id);
             if (entity == null)
@@ -57,7 +64,7 @@ namespace API.Controllers
             return Ok("Yeniləndi!");
         }
         [HttpDelete("Delete/{Id}")]
-        public IActionResult Delete(long Id)
+        public IActionResult Delete(int Id)
         {
             if (Id == null)
             {

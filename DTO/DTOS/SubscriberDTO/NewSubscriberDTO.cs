@@ -5,14 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entity.Models
+namespace DTO.DTOS.SubscriberDTO
 {
-    public class Subscribers
+    public class NewSubscriberDTO
     {
-        public int Id { get; set; }
        
         public string Email { get; set; }
 
-        public bool Status { get; set; }    
+        public bool Status { get; set; } = false;    
+
+
     }
 }

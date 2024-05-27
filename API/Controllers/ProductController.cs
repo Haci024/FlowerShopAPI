@@ -31,13 +31,13 @@ namespace API.Controllers
             return Ok(dtos);
         }
         [HttpGet("GetById/{Id}")]
-        public IActionResult GetById(long Id)
+        public IActionResult GetById(int Id)
         {
             var values = _mapper.Map<GetProductDTO>(_product.GetById(Id));
             return Ok(values);
         }
         [HttpGet("ProductListByCategory/{categoryId}")]
-        public IActionResult ProductListByCategory(long categoryId)
+        public IActionResult ProductListByCategory(int categoryId)
         {
             var entities = _product.ActiveProductsByCategory(categoryId);
             var dtos = _mapper.Map<IEnumerable<CategoryListDTO>>(entities);
@@ -61,7 +61,7 @@ namespace API.Controllers
             return Ok(dtos);
         }
         [HttpGet("PopularProductListByCategory/{categoryId}")]
-        public IActionResult PopularProductList(long categoryId)
+        public IActionResult PopularProductList(int categoryId)
         {
             var entities = _product.PopularProductsByCategory(categoryId);
             var dtos = _mapper.Map<IEnumerable<CategoryListDTO>>(entities);
@@ -81,7 +81,7 @@ namespace API.Controllers
         #endregion
         #region Update
         [HttpPut("UpdateProduct/{Id}")]
-        public IActionResult Update(long Id,UpdateProductDTO dto)
+        public IActionResult Update(int Id,UpdateProductDTO dto)
         {
             var entity = _product.GetById(Id);
             if (entity == null)
@@ -95,7 +95,7 @@ namespace API.Controllers
         #endregion
         #region Delete
         [HttpDelete("/DeleteProduct/{Id}")]
-        public IActionResult DeleteProduct(long Id) {
+        public IActionResult DeleteProduct(int Id) {
 
             if (Id == null)
             {

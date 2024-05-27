@@ -12,7 +12,7 @@ namespace Business.Service
         public void Create(T entity);
         public void Update(T entity);
         public void Delete(T entity);
-        public T GetById(long id);
+        public T GetById(int id);
         public IEnumerable<T> GetList();
     }
 }
